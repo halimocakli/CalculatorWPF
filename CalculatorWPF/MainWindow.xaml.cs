@@ -20,13 +20,10 @@ namespace CalculatorWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        // Hesap makinesinde oluşturulan son sayı
         private double lastNumber;
         private double result;
 
         SelectedOperator selectedOperator;
-
-
         public MainWindow()
         {
             InitializeComponent();
@@ -89,13 +86,15 @@ namespace CalculatorWPF
 
         private void PercentageButtonClick(object sender, RoutedEventArgs e)
         {
+            // 50 + 5% = 50 + 2.5 = 52.5
+            // 80 + 10% = 80 + 8 = 88
             try
             {
                 double tempNumber;
 
                 if (double.TryParse(ResultTextBlock.Text.ToString(), out tempNumber))
                 {
-                    tempNumber = tempNumber / 100;
+                    tempNumber /= 100;
 
                     if (lastNumber != 0)
                     {
